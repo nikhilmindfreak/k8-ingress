@@ -43,6 +43,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+     # this annotation is useful to keep only ALB under joindevops group. if you don't give this it will create another ALB.
     alb.ingress.kubernetes.io/group.name: joindevops   #group name is imp 
 spec:
   ingressClassName: alb  #imp
