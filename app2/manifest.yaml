@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: app2
-        image: joindevops/app2:1.0
+        image: nikhilmindfreak/app2:1.0
 ---
 apiVersion: v1
 kind: Service
@@ -48,7 +48,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app2.daws78s.online" # ALB Rule
+  - host: "app2.devopsme.online" # ALB Rule
     http:
       paths:
       - pathType: Prefix

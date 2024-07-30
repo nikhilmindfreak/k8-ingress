@@ -20,8 +20,8 @@ spec:
     spec:
       containers:
       - name: app1
-        image: joindevops/app1:1.0
----
+        image: nikhilmindfreak/app1:1.0
+--- # here in service we remove type LB because we use ALB with ingress.
 apiVersion: v1
 kind: Service
 metadata:
@@ -34,20 +34,20 @@ spec:
   - protocol: TCP
     port: 80 #service-port
     targetPort: 80 #target-port
----
+--- # 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app1
-  annotations:
+  annotations:   #we use annotation to create ALB 
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-    alb.ingress.kubernetes.io/group.name: joindevops
+    alb.ingress.kubernetes.io/group.name: joindevops   #group name is imp 
 spec:
-  ingressClassName: alb
+  ingressClassName: alb  #imp
   rules:
-  - host: "app1.daws78s.online" # ALB Rule
+  - host: "app1.devopsme.online" # ALB Rule
     http:
       paths:
       - pathType: Prefix
